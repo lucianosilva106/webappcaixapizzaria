@@ -12,47 +12,47 @@ namespace webappcaixapizzaria.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FuncionariosController : ControllerBase
+    public class CaixacontrolesController : ControllerBase
     {
         private readonly Contexto _context;
 
-        public FuncionariosController(Contexto context)
+        public CaixacontrolesController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: api/Funcionarios
+        // GET: api/Caixacontroles
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionario()
+        public async Task<ActionResult<IEnumerable<Caixacontrole>>> GetCaixacontrole()
         {
-            return await _context.Funcionario.ToListAsync();
+            return await _context.Caixacontrole.ToListAsync();
         }
 
-        // GET: api/Funcionarios/5
+        // GET: api/Caixacontroles/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Funcionario>> GetFuncionario(int id)
+        public async Task<ActionResult<Caixacontrole>> GetCaixacontrole(int id)
         {
-            var funcionario = await _context.Funcionario.FindAsync(id);
+            var caixacontrole = await _context.Caixacontrole.FindAsync(id);
 
-            if (funcionario == null)
+            if (caixacontrole == null)
             {
                 return NotFound();
             }
 
-            return funcionario;
+            return caixacontrole;
         }
 
-        // PUT: api/Funcionarios/5
+        // PUT: api/Caixacontroles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFuncionario(int id, [FromForm]Funcionario funcionario)
+        public async Task<IActionResult> PutCaixacontrole(int id, [FromForm]Caixacontrole caixacontrole)
         {
-            if (id != funcionario.Id)
+            if (id != caixacontrole.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(funcionario).State = EntityState.Modified;
+            _context.Entry(caixacontrole).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace webappcaixapizzaria.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FuncionarioExists(id))
+                if (!CaixacontroleExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace webappcaixapizzaria.Controllers
             return NoContent();
         }
 
-        // POST: api/Funcionarios
+        // POST: api/Caixacontroles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Funcionario>> PostFuncionario([FromForm] Funcionario funcionario)
+        public async Task<ActionResult<Caixacontrole>> PostCaixacontrole([FromForm] Caixacontrole caixacontrole)
         {
-            _context.Funcionario.Add(funcionario);
+            _context.Caixacontrole.Add(caixacontrole);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFuncionario", new { id = funcionario.Id }, funcionario);
+            return CreatedAtAction("GetCaixacontrole", new { id = caixacontrole.Id }, caixacontrole);
         }
 
-        // DELETE: api/Funcionarios/5
+        // DELETE: api/Caixacontroles/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFuncionario(int id)
+        public async Task<IActionResult> DeleteCaixacontrole(int id)
         {
-            var funcionario = await _context.Funcionario.FindAsync(id);
-            if (funcionario == null)
+            var caixacontrole = await _context.Caixacontrole.FindAsync(id);
+            if (caixacontrole == null)
             {
                 return NotFound();
             }
 
-            _context.Funcionario.Remove(funcionario);
+            _context.Caixacontrole.Remove(caixacontrole);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool FuncionarioExists(int id)
+        private bool CaixacontroleExists(int id)
         {
-            return _context.Funcionario.Any(e => e.Id == id);
+            return _context.Caixacontrole.Any(e => e.Id == id);
         }
     }
 }
