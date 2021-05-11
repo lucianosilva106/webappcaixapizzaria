@@ -47,6 +47,10 @@
     <Compile Remove="Model\Class.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\src\xurras_porto2.jpg" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

@@ -17,5 +17,7 @@ namespace webappcaixapizzaria.Configuracao
 
         public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<Caixacontrole> Caixacontrole { get; set; }
+        public DbSet<Caixalancamento> Caixalancamento { get; set; }
+        public DbSet<Formapagamento> FormaPagamento { get; set; }
     }
 }
