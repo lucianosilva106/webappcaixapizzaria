@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webappcaixapizzaria.Configuracao;
 using webappcaixapizzaria.Model;
-
+    
 namespace webappcaixapizzaria.Controllers
 {
     [Route("api/[controller]")]

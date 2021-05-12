@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+//using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,9 +20,10 @@ namespace webappcaixapizzaria
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
-
+                        
             services.AddDbContext<Contexto>
                 (options => options.UseSqlServer
                 (Configuration.GetConnectionString("DefaultConnection")));
@@ -34,6 +35,8 @@ namespace webappcaixapizzaria
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +57,11 @@ namespace webappcaixapizzaria
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+                        
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
