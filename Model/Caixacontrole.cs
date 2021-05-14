@@ -22,10 +22,10 @@ namespace webappcaixapizzaria.Model
         public double Valorfundocaixa { get; set; }
 
         [Column("Datahorafechamento")]
-        public int Datahorafechamento { get; set; }
+        public DateTime Datahorafechamento { get; set; }
 
         [Column("Valorfinalcaixa")]
-        public int Valorfinalcaixa { get; set; }
+        public double Valorfinalcaixa { get; set; }
 
     }
 }

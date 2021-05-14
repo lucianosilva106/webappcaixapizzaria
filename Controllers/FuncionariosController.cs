@@ -1,13 +1,13 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webappcaixapizzaria.Configuracao;
 using webappcaixapizzaria.Model;
-    
+
 namespace webappcaixapizzaria.Controllers
 {
     [Route("api/[controller]")]
@@ -45,7 +45,7 @@ namespace webappcaixapizzaria.Controllers
         // PUT: api/Funcionarios/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFuncionario(int id, [FromForm]Funcionario funcionario)
+        public async Task<IActionResult> PutFuncionario(int id, Funcionario funcionario)
         {
             if (id != funcionario.Id)
             {
@@ -76,9 +76,12 @@ namespace webappcaixapizzaria.Controllers
         // POST: api/Funcionarios
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Funcionario>> PostFuncionario([FromForm] Funcionario funcionario)
+        public async Task<ActionResult<Funcionario>> PostFuncionario(Funcionario funcionario)
         {
+            
+            
             _context.Funcionario.Add(funcionario);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetFuncionario", new { id = funcionario.Id }, funcionario);
