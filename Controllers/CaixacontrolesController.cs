@@ -45,7 +45,7 @@ namespace webappcaixapizzaria.Controllers
         // PUT: api/Caixacontroles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCaixacontrole(int id, [FromForm]Caixacontrole caixacontrole)
+        public async Task<IActionResult> PutCaixacontrole(int id, Caixacontrole caixacontrole)
         {
             if (id != caixacontrole.Id)
             {
@@ -76,7 +76,7 @@ namespace webappcaixapizzaria.Controllers
         // POST: api/Caixacontroles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Caixacontrole>> PostCaixacontrole([FromForm] Caixacontrole caixacontrole)
+        public async Task<ActionResult<Caixacontrole>> PostCaixacontrole( Caixacontrole caixacontrole)
         {
             _context.Caixacontrole.Add(caixacontrole);
             await _context.SaveChangesAsync();
