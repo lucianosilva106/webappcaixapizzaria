@@ -30,5 +30,9 @@ namespace webappcaixapizzaria.Model
 
         [Column("Observacao")]
         public string Observacao { get; set; }
+
+        [Column("Comanda")]
+
+        public int Comanda { get; set; }
     }
 }

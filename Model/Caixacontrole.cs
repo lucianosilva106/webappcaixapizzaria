@@ -27,5 +27,8 @@ namespace webappcaixapizzaria.Model
         [Column("Valorfinalcaixa")]
         public double Valorfinalcaixa { get; set; }
 
+        [Column("Flagcaixafechado")]
+        public int Flagcaixafechado { get; set; }
+
     }
 }
