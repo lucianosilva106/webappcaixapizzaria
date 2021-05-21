@@ -5,7 +5,6 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
-    <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
     <UserSecretsId>004e1f2d-b776-401a-8849-5b12d515d750</UserSecretsId>
   </PropertyGroup>
@@ -45,10 +44,6 @@
 
   <ItemGroup>
     <Compile Remove="Model\Class.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="ClientApp\src\xurras_porto2.jpg" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-//using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -30,12 +29,6 @@ namespace webappcaixapizzaria
 
             services.AddControllersWithViews();
 
-            // In production, the React files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
-
             services.AddCors();
         }
 
@@ -55,7 +48,6 @@ namespace webappcaixapizzaria
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
@@ -69,16 +61,6 @@ namespace webappcaixapizzaria
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
-            });
-
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
             });
         }
     }
