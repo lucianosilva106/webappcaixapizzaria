@@ -23,10 +23,17 @@ namespace webappcaixapizzaria.Controllers
 
         // GET: api/Caixalancamentoes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Caixalancamento>>> GetCaixalancamento()
+        [Route("caixa/{idcaixacontrole}/lancamento")]
+
+         public async Task<ActionResult<IEnumerable<Caixalancamento>>> GetCaixalancamentos(int idcaixacontrole)
         {
-            return await _context.Caixalancamento.ToListAsync();
+            return await _context.Caixalancamento.Where(a => a.Idcaixacontrole == idcaixacontrole).ToListAsync();
         }
+
+//        public async Task<ActionResult<IEnumerable<Caixalancamento>>> GetCaixalancamento()
+//        {
+//            return await _context.Caixalancamento.ToListAsync();
+//        }
 
         // GET: api/Caixalancamentoes/5
         [HttpGet("{id}")]
@@ -80,7 +87,7 @@ namespace webappcaixapizzaria.Controllers
         {
             _context.Caixalancamento.Add(caixalancamento);
             await _context.SaveChangesAsync();
-
+                    
             return CreatedAtAction("GetCaixalancamento", new { id = caixalancamento.Id }, caixalancamento);
         }
 
