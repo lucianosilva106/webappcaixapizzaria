@@ -24,9 +24,9 @@ namespace webappcaixapizzaria.Controllers
 
         // GET: api/Funcionarios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionarioLogin(string fun_login)
+        public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionario()
         {
-            return await _context.Funcionario.Where(a => a.Fun_login == fun_login).ToListAsync();
+            return await _context.Funcionario.ToListAsync();
         }
 
         // GET: api/Funcionarios/5
