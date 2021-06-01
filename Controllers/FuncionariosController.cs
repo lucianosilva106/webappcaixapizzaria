@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webappcaixapizzaria.Configuracao;
 using webappcaixapizzaria.Model;
+using webappcaixapizzaria.DTO;
 
 namespace webappcaixapizzaria.Controllers
 {
@@ -23,9 +24,9 @@ namespace webappcaixapizzaria.Controllers
 
         // GET: api/Funcionarios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionario()
+        public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionarioLogin(string fun_login)
         {
-            return await _context.Funcionario.ToListAsync();
+            return await _context.Funcionario.Where(a => a.Fun_login == fun_login).ToListAsync();
         }
 
         // GET: api/Funcionarios/5
@@ -78,8 +79,8 @@ namespace webappcaixapizzaria.Controllers
         [HttpPost]
         public async Task<ActionResult<Funcionario>> PostFuncionario(Funcionario funcionario)
         {
-            
-            
+
+
             _context.Funcionario.Add(funcionario);
 
             await _context.SaveChangesAsync();
@@ -107,5 +108,22 @@ namespace webappcaixapizzaria.Controllers
         {
             return _context.Funcionario.Any(e => e.Id == id);
         }
+
+        //POST: api/login
+        [Route("/login")]
+        public static ResponseTokenDTO Login(LoginDTO login)
+        {
+            var user = _context.Funcionario.Select(f => f.Fun_login == login.Log_email);
+            if (user && user.Fun_senha = login.Log_senha)
+            {
+                var token = new ResponseTokenDTO()
+                {
+                    Token: user.Fun_id
+                };
+            return token;
+            }
+            return NoContent();
+        }
+
     }
 }

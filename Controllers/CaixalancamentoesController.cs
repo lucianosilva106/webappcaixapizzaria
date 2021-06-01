@@ -30,11 +30,6 @@ namespace webappcaixapizzaria.Controllers
             return await _context.Caixalancamento.Where(a => a.Idcaixacontrole == idcaixacontrole).ToListAsync();
         }
 
-//        public async Task<ActionResult<IEnumerable<Caixalancamento>>> GetCaixalancamento()
-//        {
-//            return await _context.Caixalancamento.ToListAsync();
-//        }
-
         // GET: api/Caixalancamentoes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Caixalancamento>> GetCaixalancamento(int id)
