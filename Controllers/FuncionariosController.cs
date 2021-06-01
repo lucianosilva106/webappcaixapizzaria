@@ -110,17 +110,18 @@ namespace webappcaixapizzaria.Controllers
         }
 
         //POST: api/login
-        [Route("/login")]
-        public static ResponseTokenDTO Login(LoginDTO login)
+        [Route("/api/login")]
+        [HttpPost]
+        public async Task<ActionResult<ResponseTokenDTO>> Login(LoginDTO login)
         {
-            var user = _context.Funcionario.Select(f => f.Fun_login == login.Log_email);
-            if (user && user.Fun_senha = login.Log_senha)
+            var user = await _context.Funcionario.SingleAsync(f => f.Fun_login == login.Email);
+            if (user != null && user.Fun_senha == login.Senha)
             {
                 var token = new ResponseTokenDTO()
                 {
-                    Token: user.Fun_id
+                    Token = user.Id.ToString()
                 };
-            return token;
+                return token;
             }
             return NoContent();
         }

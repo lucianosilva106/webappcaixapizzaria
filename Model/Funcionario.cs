@@ -23,5 +23,6 @@ namespace webappcaixapizzaria.Model
 
         [Column("Fun_senha")]
         public string Fun_senha { get; set; }
+
     }
 }
